@@ -4,10 +4,7 @@ import {Mappable} from "./Maps";
 export class Company implements Mappable{
     name: string;
     catchPharser: string;
-    location: {lat:number; lng: number} = {
-        lat: 0,
-        lng: 0,
-    };
+    location: {lat:number; lng: number};
 
     constructor(){
         this.name = faker.company.companyName();

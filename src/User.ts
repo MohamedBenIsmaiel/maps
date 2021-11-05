@@ -3,11 +3,7 @@ import { Mappable } from "./Maps";
 
 export class User implements Mappable{
     name:string;
-    location:{lat:number; lng:number} = {
-        lat: 0,
-        lng: 0,
-    };
-
+    location:{lat:number; lng:number};
     constructor(){
         this.name = faker.name.firstName();
         this.location = {
