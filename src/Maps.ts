@@ -6,7 +6,7 @@ export interface Mappable{
     getContent():string;
 }
 export class Maps{
-    getmap: google.maps.Map;
+   private getmap: google.maps.Map;
     constructor( elmentId:string) {
        this.getmap =  new google.maps.Map(document.getElementById(elmentId), {
             zoom:1,
