@@ -1,8 +1,9 @@
-import faker from "faker";
+import faker, { fake } from "faker";
 import {Mappable} from "./Maps";
 
 export class Company implements Mappable{
     name: string;
+    catchPharser: string;
     location: {lat:number; lng: number} = {
         lat: 0,
         lng: 0,
@@ -14,5 +15,12 @@ export class Company implements Mappable{
             lat: parseFloat(faker.address.latitude()),
             lng: parseFloat(faker.address.longitude()),
         };
+        this.catchPharser = faker.company.catchPhrase();
+    }
+    getContent():string{
+        return `
+          Company name is ${this.name} ,
+          catch phrase ${this.catchPharser}
+        `
     }
 }

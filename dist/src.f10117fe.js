@@ -128,9 +128,8 @@ exports.Maps = void 0;
 var Maps =
 /** @class */
 function () {
-  function Maps(map, elmentId) {
-    this.map = map;
-    new this.map(document.getElementById(elmentId), {
+  function Maps(elmentId) {
+    this.getmap = new google.maps.Map(document.getElementById(elmentId), {
       zoom: 1,
       center: {
         lat: 0,
@@ -138,6 +137,25 @@ function () {
       }
     });
   }
+
+  Maps.prototype.addMark = function (elment) {
+    var _this = this;
+
+    var marker = new google.maps.Marker({
+      map: this.getmap,
+      position: {
+        lat: elment.location.lat,
+        lng: elment.location.lng
+      }
+    }); //adding a listener
+
+    marker.addListener('click', function () {
+      var infoWindow = new google.maps.InfoWindow({
+        content: elment.getContent()
+      });
+      infoWindow.open(_this.getmap, marker);
+    });
+  };
 
   return Maps;
 }();
@@ -152,7 +170,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var Maps_1 = require("./Maps");
 
-new Maps_1.Maps(google.maps.Map, 'map');
+new Maps_1.Maps('map');
 },{"./Maps":"src/Maps.ts"}],"../.nvm/versions/node/v14.17.2/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -181,7 +199,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45189" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42851" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
